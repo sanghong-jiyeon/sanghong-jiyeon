@@ -1,0 +1,764 @@
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 97%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.parent {
+    font-size: 1.1rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Noto Serif KR', serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, #faded7, #d4a373, #faded7);
+}
+
+/* h2::before {
+    content: '❦';
+    font-size: 1rem;
+    color: #d4a373;
+    position: absolute;
+    bottom: -1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+.section-decoration {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    background-color: #d4a373;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 3px 10px rgba(212, 163, 115, 0.3);
+    z-index: 3;
+}
+
+.invitation .section-decoration {
+    top: -8px;
+}
+
+.section-decoration i {
+    font-size: 1rem;
+}
+
+section {
+    padding: 2rem 1.2rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(to right, transparent, rgba(212, 163, 115, 0.3), transparent);
+    border-radius: 15px 15px 0 0;
+}
+
+.highlight {
+    color: #d4a373;
+    font-weight: 500;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(212, 163, 115, 0.2);
+    border-radius: 2px;
+}
+
+/* 헤더 스타일 */
+.header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+/* 고정 배경 이미지 */
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('images/cover2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
+    z-index: 0;
+    transition: filter 0.5s ease, background-color 0.5s ease;
+}
+
+.header-content {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+/* 스크롤 유도 아이콘 스타일 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards, bounceUpDown 2s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes bounceUpDown {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(15px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.scroll-indicator i {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 헤더 텍스트 스타일 */
+.header-text {
+    padding: 2rem;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 85%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.3rem;
+}
+
+.header .names {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.header .date,
+.header .location {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 초대글 섹션 */
+.invitation {
+    text-align: center;
+    line-height: 1.8;
+    margin-top: 0;
+    background-color: #fff9f5;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.invitation p {
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.invitation>p {
+    font-size: 1.1rem;
+}
+
+/* .invitation p::before,
+.invitation p::after {
+    content: '❦';
+    color: rgba(212, 163, 115, 0.4);
+    font-size: 0.8rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+.invitation p::before {
+    top: -1.5rem;
+}
+
+.invitation p::after {
+    bottom: -1.5rem;
+}
+
+.parents {
+    margin-top: 0.3rem;
+    margin-bottom: 1.4rem;
+    line-height: 2;
+    background-color: rgba(250, 237, 215, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(212, 163, 115, 0.1);
+}
+
+.parent {
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+.parent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(212, 163, 115, 0.2);
+}
+
+.mainphoto {
+    background-color: rgb(245, 237, 230);
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+    z-index: 0;
+}
+
+.mainphoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.mainphoto:hover img {
+    transform: scale(1.03);
+}
+
+/* 갤러리 섹션 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.photo:hover img {
+    transform: scale(1.05);
+}
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.modal-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #d4a373;
+}
+
+/* 캘린더 섹션 */
+.calendar-container {
+    margin: 0 auto;
+    max-width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+.month {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #d4a373;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.month::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4a373, transparent);
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.weekdays div:first-child {
+    color: #e74c3c;
+}
+
+.weekdays div:last-child {
+    color: #3498db;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.days div {
+    padding: 0.5rem 0;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.wedding-day {
+    background-color: #faded7;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #d4a373 !important;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(212, 163, 115, 0.2);
+    transform: scale(1.15);
+}
+
+.wedding-day::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px dashed #d4a373;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.wedding-day-info {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: #d4a373;
+    background-color: rgba(250, 222, 215, 0.3);
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 10px rgba(212, 163, 115, 0.1);
+}
+
+/* 오시는 길 섹션 */
+.venue-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background-color: rgba(250, 237, 215, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.venue-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #d4a373;
+    position: relative;
+    display: inline-block;
+}
+
+.venue-name::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(212, 163, 115, 0.3);
+}
+
+.map-container {
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid white;
+    position: relative;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.transport-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.transport-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(212, 163, 115, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.transport-item:hover {
+    transform: translateY(-5px);
+}
+
+.transport-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: #d4a373;
+    position: relative;
+    display: inline-block;
+}
+
+.transport-item h3::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(212, 163, 115, 0.2);
+}
+
+/* 연락처 및 계좌번호 섹션 */
+.contact-grid,
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item,
+.account-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.person {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #d4a373;
+    position: relative;
+    display: inline-block;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: #d4a373;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.call {
+    background-color: #3498db;
+}
+
+.sms {
+    background-color: #2ecc71;
+}
+
+/* 계좌 정보 */
+.account-info {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+.account-info:hover {
+    background-color: #fdf6ed;
+    transform: translateY(-5px);
+}
+
+.bank {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.account-number {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #d4a373;
+    word-break: break-all;
+    position: relative;
+    display: inline-block;
+}
+
+.account-holder {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.copy-guide {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    margin-top: 1rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.3rem 1rem;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #888;
+    font-size: 0.9rem;
+    background-color: #fff;
+    border-radius: 15px 15px 0 0;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.footer::before {
+    content: '❦';
+    font-size: 1rem;
+    color: #d4a373;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.copyright {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* 반응형 스타일 */
+@media (min-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    section {
+        padding: 3rem 2.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .transport-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.more-images {
+    text-align: center;
+}
+
+.more-images-description {
+    display: block;
+    font-size: 1.1rem;
+    color: #d4a373;
+    margin: 1.5rem auto 1.5rem;
+    max-width: 90%;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background-color: rgba(250, 237, 215, 0.3);
+    border-radius: 30px;
+}
+
+.more-images-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 2rem;
+}
+
+.more-images-btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    background-color: #d4a373;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.more-images-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    background-color: #c69c6d;
+} 

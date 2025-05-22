@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 청첩장</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="parallax-bg"></div>
+            <div class="header-content">
+                <!-- <div class="header-text">
+                    <h1>결혼합니다</h1>
+                    <p class="names">신랑 <span class="highlight">김상홍</span> & 신부 <span class="highlight">채지연</span></p>
+                    <p class="date">2025년 9월 11일 토요일 오후 12시 00분</p>
+                    <p class="location">서초 파크해밍홀</p>
+                </div> -->
+            </div>
+            <div class="scroll-indicator">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </header>
+        
+        <section class="invitation">
+            <div class="section-decoration"><i class="fa-solid fa-heart"></i></div>
+            <h2>초대합니다</h2>
+            <p>
+                사랑안에서 가장 귀히 여기며<br>
+                너희끼리 화목하라<br>
+                데살로니가 전서 5:13<br>
+                <br>
+                하나님과 공동체의 사랑으로 만난<br>
+                두 사람이 가정을 이루게 되었습니다.<br>
+                반을 버리고 반을 채워 하나되는 혼인잔치를<br>
+                귀한 걸음으로 빛내 주시기 바랍니다.
+            </p>
+            <div class="parents">
+                <p><span class="parent">김병헌</span> · <span class="parent">이진희</span>의 아들 <span class="highlight">김상홍</span></p>
+                <p><span class="parent">채상현</span> · <span class="parent">정미영</span>의 딸 <span class="highlight">채지연</span></p>
+            </div>
+            <div style="margin-top: -2rem;" class="mainphoto"><img src="images/image.png" alt="웨딩 사진 1"></div>
+        </section>
+                        
+        <section class="calendar">
+            <div class="section-decoration"><i class="fa-solid fa-calendar-days"></i></div>
+            <h2>날짜</h2>
+            <div class="calendar-container">
+                <div class="month">2025년 9월</div>
+                <div class="weekdays">
+                    <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+                </div>
+                <div class="days">
+                    <!-- 달력은 JavaScript로 동적 생성 -->
+                </div>
+            </div>
+            <p class="wedding-day-info">9월 11일 · 토요일 · 오후 12시 00분</p>
+        </section>
+        
+        <section class="location">
+            <div class="section-decoration"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h2>오시는 길</h2>
+            <div class="venue-info">
+                <p class="venue-name">서초 파크해밍홀</p>
+                <p class="venue-address">서울특별시 서초구 서초대로 77길 25</p>
+                <p class="venue-tel">전화: 02-534-5155</p>
+            </div>
+            <div id="map" class="map-container">
+                <!-- 지도 영역 (카카오맵 API 등으로 구현) -->
+                <img src="images/map.png" alt="지도" class="map-placeholder">
+            </div>
+            <div class="transport-info">
+                <div class="transport-item">
+                    <h3><i class="fa-solid fa-train-subway"></i> 지하철</h3>
+                    <p>강남역 3번 출구에서 도보 7분</p>
+                </div>
+                <div class="transport-item">
+                    <h3><i class="fa-solid fa-bus"></i> 버스</h3>
+                    <p>강남역 정류장: 145, 360, 740번</p>
+                </div>
+                <div class="transport-item">
+                    <h3><i class="fa-solid fa-square-parking"></i> 주차</h3>
+                    <p>3시간 무료 주차 가능</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="section-decoration"><i class="fa-solid fa-camera"></i></div>
+            <h2>갤러리</h2>
+            <div class="photo-grid">
+                <div class="photo"><img src="images/placeholder1.png" alt="웨딩 사진 1"></div>
+                <div class="photo"><img src="images/placeholder3.jpg" alt="웨딩 사진 2"></div>
+                <div class="photo"><img src="images/placeholder2.jpg" alt="웨딩 사진 3"></div>
+                <div class="photo"><img src="images/placeholder4.jpg" alt="웨딩 사진 4"></div>
+            </div>
+
+            <p class="more-images-description">신랑 신부의 아름다운 순간들을<br>더 많이 확인해보세요</p>
+            <div class="more-images-button-container">
+                <a href="javascript:void(0)" onclick="showMoreImages()" class="btn more-images-btn">
+                    <i class="fa-solid fa-photo-film"></i> 갤러리 더보기
+                </a>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <div class="section-decoration"><i class="fa-solid fa-phone"></i></div>
+            <h2>연락처</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <p class="person">신랑측</p>
+                    <div class="buttons">
+                        <a href="tel:010-7511-6376" class="btn call"><i class="fa-solid fa-phone"></i> 전화</a>
+                        <a href="sms:010-7511-6376" class="btn sms"><i class="fa-solid fa-comment"></i> 문자</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <p class="person">신부측</p>
+                    <div class="buttons">
+                        <a href="tel:010-4016-1078" class="btn call"><i class="fa-solid fa-phone"></i> 전화</a>
+                        <a href="sms:010-4016-1078" class="btn sms"><i class="fa-solid fa-comment"></i> 문자</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="account">
+            <div class="section-decoration"><i class="fa-solid fa-gift"></i></div>
+            <h2>마음 전하실 곳</h2>
+            <div class="account-grid">
+                <div class="account-item">
+                    <p class="person">신랑측</p>
+                    <div class="account-info" onclick="copyToClipboard('110-456-789012')">
+                        <p class="bank"><i class="fa-solid fa-building-columns"></i> 신한은행</p>
+                        <p class="account-number">110-456-789012</p>
+                        <p class="account-holder">김상홍</p>
+                    </div>
+                </div>
+                <div class="account-item">
+                    <p class="person">신부측</p>
+                    <div class="account-info" onclick="copyToClipboard('352-654-321098')">
+                        <p class="bank"><i class="fa-solid fa-building-columns"></i> 농협은행</p>
+                        <p class="account-number">352-654-321098</p>
+                        <p class="account-holder">채지연</p>
+                    </div>
+                </div>
+            </div>
+            <p class="copy-guide"><i class="fa-solid fa-circle-info"></i> 계좌번호 클릭 시 복사됩니다</p>
+        </section>
+        
+        <footer class="footer">
+            <p>신랑 김상홍 & 신부 채지연의 모바일 청첩장</p>
+            <p class="copyright">© 2025 Wedding</p>
+        </footer>
+    </div>
+    
+    <!-- 이미지 모달 -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+</body>
+</html> 
