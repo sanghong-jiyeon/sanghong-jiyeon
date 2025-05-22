@@ -132,6 +132,14 @@ function openModal(element) {
 function closeModal() {
     const modal = document.getElementById('imageModal');
     modal.style.display = 'none';
+    modal.classList.remove('jumpscare', 'flash');
+    // 기본 모달 내용 복원
+    modal.innerHTML = `
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    `;
+    // 스크롤 복원
+    document.body.style.overflow = '';
 }
 
 // 계좌번호 복사
@@ -147,4 +155,63 @@ function copyToClipboard(text) {
             console.error('복사에 실패했습니다:', err);
             alert('계좌번호 복사에 실패했습니다. 수동으로 복사해주세요.');
         });
+}
+
+// 갤러리 더보기 함수
+function showMoreImages() {
+    // 페이지 준비
+    document.body.style.overflow = 'hidden'; // 스크롤 방지
+    
+    // 사용자 속이기 - 잠시 로딩 표시
+    const tempLoading = document.createElement('div');
+    tempLoading.className = 'temp-loading';
+    tempLoading.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 갤러리 로딩 중...';
+    document.body.appendChild(tempLoading);
+    
+    setTimeout(() => {
+        // 로딩 제거
+        document.body.removeChild(tempLoading);
+        
+        // 모달 가져오기
+        const modal = document.getElementById('imageModal');
+        
+        // 귀신 사진으로 변경
+        modal.innerHTML = `
+            <img class="modal-content jumpscare-img" id="modalImage" src="images/ghost.png" alt="귀신">
+            <div class="ghost-message">왜 저랑 결혼 안해줘요...?</div>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+        `;
+        
+        // 모달에 점프스케어 클래스 추가
+        modal.classList.add('jumpscare');
+        
+        // 모달 표시
+        modal.style.display = 'block';
+        
+        // 화면 깜빡임 효과
+        modal.classList.add('flash');
+        
+        // 화면 진동 효과
+        if ('vibrate' in navigator) {
+            navigator.vibrate([100, 50, 200, 50, 300, 50, 200]);
+        }
+        
+        // 4초 후 페이지 이동 (closeModal 제거)
+        setTimeout(() => {
+            console.log("구글 미트로 이동합니다...");
+            try {
+                // 브라우저 호환성 문제 해결을 위해 window.open 사용
+                const meetWindow = window.open('https://meet.google.com/aud-dgjk-ooa', '_blank');
+                
+                // 팝업이 차단된 경우 사용자에게 알림
+                if (!meetWindow || meetWindow.closed || typeof meetWindow.closed == 'undefined') {
+                    alert('팝업이 차단되었습니다. 구글 미트로 이동하려면 https://meet.google.com/aud-dgjk-ooa 링크를 직접 클릭해주세요.');
+                }
+            } catch (e) {
+                console.error("리다이렉트 실패:", e);
+                // 최후의 수단 - 현재 창에서 이동
+                window.location.replace('https://meet.google.com/aud-dgjk-ooa');
+            }
+        }, 4000);
+    }, 700);
 } 

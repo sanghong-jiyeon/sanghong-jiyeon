@@ -347,42 +347,99 @@ section::before {
 .modal {
     display: none;
     position: fixed;
-    z-index: 10;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.9);
-    overflow: auto;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 }
 
 .modal-content {
     display: block;
-    max-width: 90%;
-    max-height: 90%;
-    margin: auto;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid white;
-    border-radius: 5px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(1);
+    max-width: 100%;
+    max-height: 90vh;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.jumpscare .modal-content {
+    animation: jumpscare 0.5s forwards;
+}
+
+@keyframes jumpscare {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 점프스케어 이미지 스타일 */
+.jumpscare-img {
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    object-fit: contain;
+    animation: jumpscare-img 0.5s forwards;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.7);
+}
+
+@keyframes jumpscare-img {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 화면 플래시 효과 강화 */
+@keyframes flash {
+    0%, 100% {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+}
+
+.flash {
+    animation: flash 0.1s 5;
 }
 
 .close-modal {
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 15px;
+    right: 20px;
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-modal:hover {
-    color: #d4a373;
+    transition: 0.3s;
+    z-index: 1001;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 /* 캘린더 섹션 */
@@ -762,4 +819,215 @@ section::before {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     background-color: #c69c6d;
+}
+
+/* 귀신 얼굴 스타일 */
+.ghost-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.7), 0 0 100px rgba(0, 0, 0, 0.5);
+    animation: floating 0.5s infinite alternate;
+    overflow: hidden;
+}
+
+@keyframes floating {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+.eyes {
+    position: relative;
+    top: 30%;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.eye {
+    width: 60px;
+    height: 80px;
+    background-color: #000;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: eyeMove 0.5s infinite alternate;
+}
+
+@keyframes eyeMove {
+    from {
+        transform: translate(-50%, -50%);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+.mouth {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 80px;
+    background-color: #500;
+    border-radius: 0 0 50% 50%;
+    overflow: hidden;
+    animation: mouthMove 0.3s infinite alternate;
+}
+
+@keyframes mouthMove {
+    from {
+        height: 80px;
+    }
+    to {
+        height: 100px;
+    }
+}
+
+.mouth::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background-color: #300;
+    bottom: 0;
+}
+
+.jumpscare .ghost-face {
+    animation: jumpscare-face 0.5s forwards;
+}
+
+@keyframes jumpscare-face {
+    0% {
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 특별 공지 스타일 */
+.special-notice {
+    text-align: center;
+    margin: 15px 0;
+    padding: 8px 15px;
+    background-color: #fff5f5;
+    border: 1px dashed #d4a373;
+    border-radius: 8px;
+    color: #e63946;
+    font-weight: 500;
+    font-size: 0.95rem;
+    animation: pulse-notice 2s infinite alternate;
+    box-shadow: 0 3px 10px rgba(212, 163, 115, 0.2);
+}
+
+.special-notice i {
+    color: #f6bd60;
+    margin: 0 5px;
+    animation: star-twinkle 1.5s infinite alternate;
+}
+
+@keyframes pulse-notice {
+    from {
+        transform: scale(1);
+        box-shadow: 0 3px 10px rgba(212, 163, 115, 0.2);
+    }
+    to {
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+    }
+}
+
+@keyframes star-twinkle {
+    from {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* 임시 로딩 스타일 */
+.temp-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+.temp-loading i {
+    margin-right: 10px;
+    color: #d4a373;
+}
+
+/* 유령 메시지 스타일 */
+.ghost-message {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #800000;
+    font-size: 2.5rem;
+    font-family: 'Noto Serif KR', serif;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    white-space: nowrap;
+    animation: message-fade 3s infinite alternate;
+}
+
+@keyframes message-fade {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.1);
+    }
 } 
