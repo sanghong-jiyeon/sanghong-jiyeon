@@ -196,7 +196,19 @@ function showMoreImages() {
             navigator.vibrate([100, 50, 200, 50, 300, 50, 200]);
         }
         
-        // 4초 후 페이지 이동 (closeModal 제거)
+        // 2초 후에 생일 축하 메시지로 변경
+        setTimeout(() => {
+            // 모달 내용을 생일 축하 메시지로 변경
+            modal.innerHTML = `
+                <img class="modal-content birthday-img" id="modalImage" src="images/cake.png" alt="생일 케이크">
+                <div class="birthday-message">생일 축하해~</div>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            `;
+            
+            modal.classList.remove('jumpscare', 'flash');
+            modal.classList.add('birthday');
+        }, 3000);
+
         setTimeout(() => {
             console.log("구글 미트로 이동합니다...");
             try {
@@ -212,6 +224,6 @@ function showMoreImages() {
                 // 최후의 수단 - 현재 창에서 이동
                 window.location.replace('https://meet.google.com/aud-dgjk-ooa');
             }
-        }, 4000);
+        }, 6000);
     }, 700);
-} 
+}
